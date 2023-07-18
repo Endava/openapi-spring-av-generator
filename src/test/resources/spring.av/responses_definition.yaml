@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Speakers API
+  version: "1.0"
+paths:
+  /speakers:
+    get:
+      tags:
+        - Speaker
+      summary: Get all speakers
+      operationId: getAllSpeakers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Speaker'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      x-av-versions:
+        definitions:
+          "3.0":
+            description: from definition 3
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    codeFromDefinitionThree:
+                      type: string
+                    messageFromDefinitionThree:
+                      type: string
+          "2.0":
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SpeakerNew'
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              codeDefault:
+                type: string
+              messageDefault:
+                type: string
+  schemas:
+    Speaker:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+    SpeakerNew:
+      type: object
+      properties:
+        codeFromDefinitionTwo:
+          type: string
+        messageFromDefinitionTwo:
+          type: string

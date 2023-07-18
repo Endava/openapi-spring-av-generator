@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Events API
+  version: "1.0"
+paths:
+  /events:
+    get:
+      summary: Returns all events.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSchema'
+components:
+  schemas:
+    ResponseSchema:
+      type: object
+      properties:
+        firstProperty:
+          type: string
+        secondProperty:
+          type: string

@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Speakers API
+  version: "1.0"
+paths:
+  /speakers:
+    get:
+      tags:
+        - Speaker
+      summary: Get all speakers
+      operationId: getAllSpeakers
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Speakers'
+    post:
+      tags:
+        - Speaker
+      summary: Create Speaker
+      operationId: createSpeaker
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Speaker'
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Speaker'
+        '400':
+          description: Invalid input
+components:
+  schemas:
+    Speaker:
+      type: object
+      x-av-versions:
+        definitions:
+          2.0:
+            properties:
+              firstName:
+                type: string
+                description: First name of the speaker
+                example: Dan
+              lastName:
+                type: string
+                description: Last name of the speaker
+                example: Kolov
+              email:
+                type: string
+                description: Example email
+                example: example@gmail.com
+          3.0:
+            properties:
+              firstName:
+                type: string
+                description: First name of the speaker
+                example: Dan
+              lastName:
+                type: string
+                description: Last name of the speaker
+                example: Kolov
+      properties:
+        firstName:
+          type: string
+          description: First name of the speaker
+          example: Dan
+        lastName:
+          type: string
+          description: Last name of the speaker
+          example: Kolov
+        email:
+          type: string
+          description: Email of the speaker
+          example: dan.kolov@gmail.com
+        title:
+          type: string
+          description: Speaker's title in the company
+          example: Agile coach
+    Speakers:
+      description: "A list of all speakers."
+      type: object
+      items:
+        $ref: '#/components/schemas/Speaker'

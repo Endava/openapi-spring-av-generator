@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Events API
+  version: "1.0"
+paths:
+  /events:
+    parameters:
+      - name: param1
+        in: query
+        schema:
+          type: string
+          format: date
+        description:
+          Param at path level
+        x-av-versions:
+          to: 2.0
+    get:
+      parameters:
+        - name: param2
+          in: query
+          schema:
+            type: string
+          description:
+            Param in the get operation
+          x-av-versions:
+            from: 2.0
+      x-av-versions:
+        definitions:
+          2.0:
+            responses:
+              '200':
+                description: OK in definition
+                content:
+                  application/json:
+                    schema:
+                      type: array
+                      items:
+                        $ref: '#/components/responses/ResponseSchema'
+          3.0:
+           deprecated: true
+      summary: Returns all events.
+      operationId: getEvents
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSchema'
+components:
+  schemas:
+    ResponseSchema:
+      type: object
+      properties:
+        firstProperty:
+          type: string
+        secondProperty:
+          type: string

@@ -1,0 +1,77 @@
+openapi: "3.0.2"
+info:
+  title: Conference Registry
+  version: "1"
+servers:
+  - url: https://localhost:8080
+tags:
+  - name: Speaker
+    description: Speaker specific data
+paths:
+  /speakers:
+    post:
+      tags:
+        - Speaker
+      summary: Create Speaker
+      operationId: createSpeaker
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Speaker'
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Speaker'
+        '400':
+          description: Invalid input
+components:
+  schemas:
+    Speaker:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: First name of the speaker
+          example: Dan
+        lastName:
+          x-av-versions:
+            to: 3
+          type: string
+          description: Last name of the speaker
+          example: Kolov
+        email:
+          x-av-versions:
+            from: 3
+            to: 5
+            exclude: [4]
+            required:
+              from: 3
+              exclude: [ 5 ]
+          type: string
+          description: Email of the speaker
+          example: dan.kolov@gmail.com
+        title:
+          x-av-versions:
+            from: 2
+            to: 5
+            exclude: [3]
+          type: string
+          description: Speaker's title in the company
+          example: Agile coach
+        yearsInCompany:
+          x-av-versions:
+            from: 2
+            to: 5
+            exclude: [3,4]
+            required:
+              from: 2
+              to: 4
+              exclude: [3]
+          type: integer
+          description: The number of years the speaker has worked for Endava
+          example: 100
+    

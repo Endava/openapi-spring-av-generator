@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Speakers API
+  version: "1.0"
+paths:
+  /speakers:
+    get:
+      tags:
+        - Speaker
+      summary: Get all speakers
+      operationId: getAllSpeakers
+      responses:
+        '200':
+          $ref: '#/components/responses/SpeakerResponse'
+      requestBody:
+        $ref: '#/components/requestBodies/SpeakerRequest'
+components:
+  requestBodies:
+    SpeakerRequest:
+      x-av-versions:
+        definitions:
+          "3.0":
+            description: Request description from definition 3
+            required: true
+          "2.0":
+            description: Request description from definition 2
+      description: Default description
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              defaultProperty:
+                type: string
+  responses:
+    SpeakerResponse:
+      description: Default response description
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string

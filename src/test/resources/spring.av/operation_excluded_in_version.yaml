@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Events API
+  version: "1.0"
+paths:
+  /events:
+    get:
+      x-av-versions:
+        exclude: [2.0]
+      summary: Returns all events.
+      operationId: getEvents
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSchema'
+    post:
+      operationId: createEvent
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ResponseSchema'
+        '400':
+          description: Something went wrong
+components:
+  schemas:
+    ResponseSchema:
+      type: object
+      properties:
+        firstProperty:
+          type: string
+        secondProperty:
+          type: string
