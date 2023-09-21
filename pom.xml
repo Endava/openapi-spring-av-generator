@@ -249,6 +249,13 @@
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    
     <scm>
         <url>https://github.com/Endava/openapi-spring-av-generator.git</url>
         <connection>scm:git:git@github.com:Endava/openapi-spring-av-generator.git</connection>
