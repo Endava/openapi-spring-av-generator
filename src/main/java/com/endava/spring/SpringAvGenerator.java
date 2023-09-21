@@ -45,21 +45,21 @@ import java.util.*;
 
 public class SpringAvGenerator extends SpringCodegen {
 
-  private static final String VERSION_PREFIX = "v";
-  private static final String VERSION_EXTENSION = "x-av-versions";
-  private static final String FROM_VERSION = "from";
-  private static final String TO_VERSION = "to";
-  private static final String EXCLUDE_IN_VERSIONS = "exclude";
-  private static final String REQUIRED = "required";
-  private static final String DEFINITIONS_EXTENSION = "definitions";
+  private final String VERSION_PREFIX = "v";
+  private final String VERSION_EXTENSION = "x-av-versions";
+  private final String FROM_VERSION = "from";
+  private final String TO_VERSION = "to";
+  private final String EXCLUDE_IN_VERSIONS = "exclude";
+  private final String REQUIRED = "required";
+  private final String DEFINITIONS_EXTENSION = "definitions";
   private final Set<Number> allSupportedVersions = new TreeSet<>(Comparator.comparing(number -> number.doubleValue()));
-  private static final Set<String> excludedFields = new HashSet<>(Arrays.asList("tags", "extensions"));
-  private static final ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
-  private static final OpenAPIDeserializer openAPIDeserializer = new OpenAPIDeserializer();
-  private static final String EXTENSIONS = "extensions";
-  private static final Pattern REF_PATTERN = Pattern.compile("#\\/components[^\"]*\"");
-  private static final Number DEFAULT_VERSION = 1.0;
-  private static String openAPIString;
+  private final Set<String> excludedFields = new HashSet<>(Arrays.asList("tags", "extensions"));
+  private final ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+  private final OpenAPIDeserializer openAPIDeserializer = new OpenAPIDeserializer();
+  private final String EXTENSIONS = "extensions";
+  private final Pattern REF_PATTERN = Pattern.compile("#\\/components[^\"]*\"");
+  private final Number DEFAULT_VERSION = 1.0;
+  private String openAPIString;
 
   @Override
   public String getName() {
@@ -237,7 +237,7 @@ public class SpringAvGenerator extends SpringCodegen {
     }
   }
 
-  private static String getVersionedPathName(Number version, String pathName) {
+  private String getVersionedPathName(Number version, String pathName) {
     int secondSlashIndex = pathName.indexOf("/", pathName.indexOf("/") + 1);
     int versionStartIndex = secondSlashIndex == -1 ? pathName.length() : secondSlashIndex;
     return new StringBuilder(pathName).insert(versionStartIndex, VERSION_PREFIX + version).toString();
