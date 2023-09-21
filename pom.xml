@@ -251,9 +251,9 @@
     </properties>
 
     <scm>
-        <url>https://bitbucket.endava.com/scm/av/spring-av-generator.git</url>
-        <connection>scm:git:https://bitbucket.endava.com/scm/av/spring-av-generator.git</connection>
-        <developerConnection>scm:git:https://bitbucket.endava.com/scm/av/spring-av-generator.git</developerConnection>
+        <url>https://github.com/Endava/openapi-spring-av-generator.git</url>
+        <connection>scm:git:git@github.com:Endava/openapi-spring-av-generator.git</connection>
+        <developerConnection>scm:git:git@github.com:Endava/openapi-spring-av-generator.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
