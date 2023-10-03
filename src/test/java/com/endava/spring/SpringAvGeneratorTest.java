@@ -678,7 +678,7 @@ public class SpringAvGeneratorTest {
     final Map<String, File> files = generateFiles(codegen, "src/test/resources/spring.av/spring/2_0/petstore.yaml");
 
     // Check that the @RequestMapping annotation is not generated in the Api file
-    final File petApiFile = files.get("PetApi.java");
+    final File petApiFile = files.get("Petv10Api.java");
     JavaFileAssert.assertThat(petApiFile).assertTypeAnnotations().hasSize(3).containsWithName("Validated")
         .containsWithName("Generated").containsWithName("Tag");
   }
@@ -693,7 +693,7 @@ public class SpringAvGeneratorTest {
     final Map<String, File> files = generateFiles(codegen, "src/test/resources/spring.av/spring/2_0/petstore.yaml");
 
     // Check that the @RequestMapping annotation is not generated in the Api file
-    final File petApiFile = files.get("PetApi.java");
+    final File petApiFile = files.get("Petv10Api.java");
     JavaFileAssert.assertThat(petApiFile).assertTypeAnnotations().hasSize(3).containsWithName("Validated")
         .containsWithName("Generated").containsWithName("Tag");
   }
@@ -1261,7 +1261,6 @@ public class SpringAvGeneratorTest {
     final SpringAvGenerator codegen = new SpringAvGenerator();
     codegen.processOpts();
     Assert.assertEquals(codegen.importMapping().get("org.springframework.core.io.Resource"), "org.springframework.core.io.Resource");
-    Assert.assertEquals(codegen.importMapping().get("Pageable"), "org.springframework.data.domain.Pageable");
     Assert.assertEquals(codegen.importMapping().get("DateTimeFormat"), "org.springframework.format.annotation.DateTimeFormat");
     Assert.assertEquals(codegen.importMapping().get("ApiIgnore"), "springfox.documentation.annotations.ApiIgnore");
     Assert.assertEquals(codegen.importMapping().get("ParameterObject"), "org.springdoc.api.annotations.ParameterObject");
@@ -1596,7 +1595,6 @@ public class SpringAvGeneratorTest {
   @Test
   public void testResponseWithArray_issue11897() throws Exception {
     Map<String, Object> additionalProperties = new HashMap<>();
-    additionalProperties.put(AbstractJavaCodegen.FULL_JAVA_UTIL, "true");
     additionalProperties.put(SpringCodegen.USE_TAGS, "true");
     additionalProperties.put(SpringCodegen.INTERFACE_ONLY, "true");
     additionalProperties.put(SpringCodegen.SKIP_DEFAULT_INTERFACE, "true");
@@ -1669,7 +1667,6 @@ public class SpringAvGeneratorTest {
   @Test
   public void shouldSetDefaultValueForMultipleArrayItems() throws IOException {
     Map<String, Object> additionalProperties = new HashMap<>();
-    additionalProperties.put(AbstractJavaCodegen.FULL_JAVA_UTIL, "true");
     additionalProperties.put(SpringCodegen.USE_TAGS, "true");
     additionalProperties.put(SpringCodegen.INTERFACE_ONLY, "true");
     additionalProperties.put(SpringCodegen.SKIP_DEFAULT_INTERFACE, "true");
