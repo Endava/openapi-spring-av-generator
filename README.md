@@ -72,9 +72,9 @@ Spring AV Generator could be used as a Maven plug-in dependency like this:
     </executions>
     <dependencies>
         <dependency>
-            <groupId>org.openapitools</groupId>
+            <groupId>com.endava</groupId>
             <artifactId>spring-av-openapi-generator</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 </plugin>
